@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gtiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="50%"  stop-color="#c9c9c9"/>
+      <stop offset="100%" stop-color="#5a5a5a"/>
+    </linearGradient>
+    <linearGradient id="gtiRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#5a5a5a" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="gtiGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Hexagon Core -->
+  <polygon points="100,15 165,52 165,128 100,165 35,128 35,52"
+           fill="none" stroke="url(#gtiGrad)" stroke-width="3"
+           filter="url(#gtiGlow)"/>
+
+  <!-- Huruf G -->
+  <path d="M128 78
+           C128 66 118 58 100 58
+           C82 58 72 68 72 84
+           V116
+           C72 132 82 142 100 142
+           C118 142 128 132 128 120
+           V104
+           H100
+           V114
+           H118
+           V120
+           C118 126 112 132 100 132
+           C88 132 82 126 82 116
+           V84
+           C82 74 88 68 100 68
+           C112 68 118 72 118 78
+           Z"
+        fill="url(#gtiGrad)" filter="url(#gtiGlow)"/>
+
+  <!-- Orbit Ring -->
+  <circle cx="100" cy="100" r="80"
+          fill="none" stroke="url(#gtiRing)" stroke-width="1"
+          opacity="0.6" stroke-dasharray="6 8">
+    <animateTransform attributeName="transform"
+                      type="rotate"
+                      from="0 100 100"
+                      to="360 100 100"
+                      dur="12s"
+                      repeatCount="indefinite"/>
+  </circle>
+</svg>
