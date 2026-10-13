@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>GTI AI</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-glow">
+    <span class="glow glow-1"></span>
+    <span class="glow glow-2"></span>
+    <span class="glow glow-3"></span>
+  </div>
+
+  <!-- SPLASH VIDEO -->
+  <div id="splash" class="splash">
+    <video id="splashVideo" class="splash-video" autoplay muted playsinline>
+      <source src="assets/splash.mp4" type="video/mp4" />
+    </video>
+
+    <button id="skipBtn" class="skip-btn" aria-label="skip">
+      <span>Skip</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+              fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="welcome-text">
+      <h1>Welcome</h1>
+      <p>to GTI AI</p>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <main id="app" class="app hidden">
+
+    <header class="topbar">
+      <div class="brand-mini">
+        <img src="assets/logo.svg" alt="logo" class="logo-mini"/>
+        <div>
+          <h2>GTI AI</h2>
+          <p class="status-line"><span class="dot"></span> Engine Online</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button id="newChatBtn" class="icon-btn" aria-label="new chat">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button id="menuBtn" class="icon-btn" aria-label="menu">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor"
+                  stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section id="chat" class="chat">
+      <div class="msg bot">
+        <div class="avatar">
+          <img src="assets/logo.svg" alt="bot"/>
+        </div>
+        <div class="bubble">
+          <p>Halo Saya <b>GTI AI</b>, siap membantu apapun yang kalian butuhkan.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="input-area">
+      <button id="attachBtn" class="icon-btn attach" aria-label="attach">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14" stroke="currentColor"
+                stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <input id="userInput" type="text" placeholder="Tanya apa saja ke GTI..." autocomplete="off"/>
+      <button id="sendBtn" class="send-btn" aria-label="send">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 11l18-8-8 18-2-8-8-2z" fill="currentColor"/>
+        </svg>
+      </button>
+    </footer>
+
+    <!-- Attachment Panel -->
+    <div id="attachPanel" class="attach-panel">
+      <button class="attach-item" data-type="camera">
+        <div class="attach-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 3l-1.5 2H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2h-3.5L15 3H9z"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <span>Kamera</span>
+      </button>
+      <button class="attach-item" data-type="gallery">
+        <div class="attach-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="16" rx="2"
+                  fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/>
+            <path d="M21 16l-5-5-4 4-3-3-6 6" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span>Galeri</span>
+      </button>
+      <button class="attach-item" data-type="file">
+        <div class="attach-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M14 2v6h6" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span>File</span>
+      </button>
+    </div>
+    <div id="attachOverlay" class="attach-overlay"></div>
+
+    <!-- Side Menu -->
+    <aside id="sideMenu" class="side-menu">
+      <div class="side-head">
+        <img src="assets/logo.svg" alt="logo" class="logo-mini"/>
+        <h3>GTI AI</h3>
+        <p>v1.0.0 • Neural Core</p>
+      </div>
+
+      <div class="side-section">
+        <div class="side-section-head">
+          <span>Riwayat Chat</span>
+          <button id="clearHistoryBtn" class="mini-btn" aria-label="clear">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"
+                    stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <ul id="historyList" class="history-list"></ul>
+      </div>
+
+      <div class="side-section">
+        <div class="side-section-head">
+          <span>Menu</span>
+        </div>
+        <nav class="side-nav">
+          <a href="#" id="navAbout">Tentang</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="about-modal">
+      <div class="about-card">
+        <button id="closeAbout" class="close-about" aria-label="close">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 6l12 12M6 18L18 6" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="about-logo">
+          <img src="assets/logo.svg" alt="logo"/>
+        </div>
+        <h3 class="about-title">GTI AI</h3>
+        <p class="about-sub">Neural Intelligence Engine</p>
+
+        <div class="about-info">
+          <div class="info-row">
+            <span class="info-label">Model AI</span>
+            <span class="info-value" id="aboutModel">GPT-4o-mini</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Developer</span>
+            <span class="info-value" id="aboutDev">Zian</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Versi</span>
+            <span class="info-value">v1.0.0</span>
+          </div>
+        </div>
+
+        <div class="about-social">
+          <a id="linkTiktok" class="social-btn" href="#" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.5 3c.3 1.8 1.5 3 3.3 3.3v2.4c-1.2 0-2.4-.4-3.3-1v6.6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1v2.5c-.3-.1-.7-.2-1-.2-2 0-3.5 1.6-3.5 3.6S8.5 18 10.5 18s3.5-1.6 3.5-3.6V3h2.5z"/>
+            </svg>
+            <span>TikTok</span>
+          </a>
+          <a id="linkWa" class="social-btn" href="#" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.5 3.5A10.4 10.4 0 0012 0C6 0 1.5 4.5 1.5 10.5c0 1.8.5 3.6 1.4 5.2L1.5 22l6.5-1.4c1.5.8 3.2 1.3 5 1.3 6 0 10.5-4.5 10.5-10.5 0-2.8-1-5.4-3-7.4zm-8.5 15c-1.6 0-3.2-.4-4.5-1.3l-.3-.2-3.8.8.8-3.7-.2-.3c-1-1.4-1.5-3-1.5-4.6 0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.3-8.5 8.3z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+          <a id="linkTg" class="social-btn" href="#" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 3L2 10.5l5.5 2L10 20l3-4 5 4 4-17zM9.5 13.5l7-5.5-5.5 7 .5 4-2-5.5-4.5-1z"/>
+            </svg>
+            <span>Telegram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="aboutOverlay" class="about-overlay"></div>
+
+    <div id="overlay" class="overlay"></div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+        </html>
