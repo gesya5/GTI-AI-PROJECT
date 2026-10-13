@@ -1,0 +1,21 @@
+# REXTOAI — Deploy ke Vercel
+
+## Yang sudah diubah
+- UI dan file aset asli tetap dipertahankan.
+- Frontend sekarang mengirim chat ke `/api/chat`.
+- API key tidak lagi disimpan di `config.js`; backend membaca `GROQ_API_KEY` dari Environment Variables Vercel.
+- Endpoint backend menggunakan Groq Chat Completions.
+
+## Cara deploy
+1. Ekstrak ZIP ini, lalu upload/push folder `www` ke repository GitHub (isi `www` menjadi root project).
+2. Import repository di Vercel. Jika seluruh ZIP/repository ikut berisi folder `native`, atur **Root Directory** ke `www`.
+3. Di Vercel buka **Project → Settings → Environment Variables**.
+4. Tambahkan:
+   - Name: `GROQ_API_KEY`
+   - Value: API key Groq milik kamu
+   - Environment: Production (tambahkan Preview/Development jika diperlukan)
+5. (Opsional) Tambahkan `GROQ_MODEL` dengan nilai `openai/gpt-oss-120b` jika ingin menentukan model dari server.
+6. Simpan, lalu lakukan **Redeploy**.
+
+## Keamanan penting
+ZIP asli berisi API key Groq langsung di `www/config.js`. Anggap key itu sudah terekspos: cabut/revoke key lama di dashboard Groq dan buat key baru. Masukkan key baru hanya ke Environment Variables Vercel. Jangan taruh key di HTML, JavaScript frontend, atau repository.
